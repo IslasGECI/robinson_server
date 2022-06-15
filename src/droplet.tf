@@ -18,7 +18,7 @@ resource "digitalocean_droplet" "robinsondata" {
   }
 }
 
-resource "digitalocean_floating_ip_assignment" "foobar" {
+resource "digitalocean_floating_ip_assignment" "robinsonip" {
   ip_address = "164.90.245.58"
   droplet_id = digitalocean_droplet.robinsondata.id
 }
