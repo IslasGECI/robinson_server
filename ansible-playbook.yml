@@ -1,0 +1,46 @@
+---
+- name: Install software using package managers
+  hosts: robinson_server
+  tasks:
+    - name: Update OS packages
+      apt:
+        update_cache: true
+      become: true
+    - name: "Install {{ item }}"
+      apt:
+        name: "{{ item }}"
+        state: present
+      become: true
+      loop:
+        - "curl"
+        - "docker-compose"
+        - "docker.io"
+        - "git"
+        - "make"
+    - name: Add '{{ ansible_user_id }}' to the group docker
+      user:
+        name: "{{ ansible_user_id }}"
+        groups: docker
+        append: true
+      become: true
+      notify: Restart server
+  handlers:
+    - name: Restart server
+      reboot:
+      become: true
+
+- name: Set system up
+  hosts: robinson_server
+  tasks:
+    - name: Set time zone
+      timezone:
+        name: America/Los_Angeles
+      become: true
+
+- name: Tests
+  hosts: robinson_server
+  tasks:
+    - name: Test Docker installation
+      docker_container:
+        name: hello-world
+        image: hello-world
