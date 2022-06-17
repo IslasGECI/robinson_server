@@ -11,8 +11,8 @@ jobs:
       uses: actions/checkout@v2
     - name: Build image
       run: docker build --tag islasgeci/robinson_server:latest --tag islasgeci/robinson_server:${github_sha:0:4} .
-    - name: Run tests
-      run: docker run islasgeci/robinson_server:latest make init
+    - name: Check format
+      run: docker run islasgeci/robinson_server:latest make check
     - name: Docker log-in
       env:
         docker_username: ${{ secrets.docker_username }}
