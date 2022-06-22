@@ -2,6 +2,10 @@
 #
 # Notifica a Healthchecks.io
 
+# Set strict mode
+set -euo pipefail
+
+# Notifica a Healthchecks.io
 function notify_healthchecks {
   curl \
     --data-raw "$2" \
