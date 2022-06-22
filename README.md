@@ -10,5 +10,11 @@ To create the server, execute the following commands:
 
 ```shell
 docker pull islasgeci/robinson_server:latest
-docker run --env DO_PAT --rm --volume ${HOME}/.ssh/id_rsa:/root/.ssh/id_rsa islasgeci/robinson_server:latest
+docker run --env DO_PAT --rm --volume ${HOME}/.ssh/id_rsa:/root/.ssh/id_rsa --volume robison_server:/src islasgeci/robinson_server:latest
+```
+
+To destroy the server, execute the following commands:
+
+```shell
+docker run --env DO_PAT --rm --volume ${HOME}/.ssh/id_rsa:/root/.ssh/id_rsa --volume robison_server:/src islasgeci/robinson_server:latest make destroy_server
 ```
