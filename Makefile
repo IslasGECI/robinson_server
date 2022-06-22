@@ -23,7 +23,8 @@ destroy_server:
 	cd src && terraform destroy -auto-approve -var "do_token=$${DO_PAT}" -var "pvt_key=$${HOME}/.ssh/id_rsa"
 
 host_known:
-	ssh-keyscan "robinsondata.icu" > "$${HOME}/.ssh/known_hosts"
+	mkdir --parents /root/.ssh && \
+	ssh-keyscan "robinsondata.icu" > "/root/.ssh/known_hosts"
 
 init:
 	cd src && terraform init
