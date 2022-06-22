@@ -45,7 +45,7 @@
   handlers:
     - name: crontab
       command: "crontab {{ ansible_facts.user_dir }}/src/Cronfile"
-      become: yes
+      become: true
 
 - name: Tests
   hosts: robinson_server
