@@ -44,7 +44,7 @@
       notify: crontab
   handlers:
     - name: crontab
-      shell: "crontab {{ ansible_facts.user_dir }}/src/Cronfile"
+      command: "crontab {{ ansible_facts.user_dir }}/src/Cronfile"
       become: yes
 
 - name: Tests
