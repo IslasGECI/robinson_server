@@ -36,6 +36,10 @@
       timezone:
         name: America/Los_Angeles
       become: true
+    - name: Copy data
+      copy:
+        src: /root/robinson_data
+        dest: "{{ ansible_facts.user_dir }}"
     - name: Copy scripts
       copy:
         src: src
