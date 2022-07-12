@@ -14,6 +14,10 @@ provider "digitalocean" {
   token = var.do_token
 }
 
+data "digitalocean_ssh_key" "provisioner" {
+  name = "provisioner"
+}
+
 data "digitalocean_ssh_key" "evaro-desktop" {
   name = "evaro@pelicano"
 }
