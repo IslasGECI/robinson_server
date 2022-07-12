@@ -4,6 +4,7 @@ resource "digitalocean_droplet" "robinsondata" {
   region = "sfo3"
   size   = "s-1vcpu-1gb"
   ssh_keys = [
+    data.digitalocean_ssh_key.provisioner.id,
     data.digitalocean_ssh_key.evaro-desktop.id,
     data.digitalocean_ssh_key.evaro-laptop.id,
     data.digitalocean_ssh_key.nepo-desktop.id,
