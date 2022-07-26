@@ -7,3 +7,4 @@ UUID=2d9c8842-9d32-4505-9bd7-ad862e9fa704
 0 * * * * source /root/src/notify_healthchecks.sh && notify_healthchecks ${UUID} "Hourly check"
 0 5 * * * docker pull islasgeci/robinson_code:latest
 0 7 * * * docker container run --volume /root/robinson_data/data:/workdir/data islasgeci/robinson_code make
+0 9 * * * source /root/src/notify_healthchecks.sh && ls /root/robinson_data/data/april_camera_traps.csv && notify_healthchecks ${UUID} "The final data structure was generated" || notify_healthchecks ${UUID}/fail "The final data structure was not generated"
